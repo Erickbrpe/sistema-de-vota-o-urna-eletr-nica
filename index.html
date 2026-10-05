@@ -5,43 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Urna Eletrônica</title>
     <style>
-    body {
-        background-color: #e2e8f0;
-        font-family: Arial, sans-serif;
+        body {
+            background-color: #e2e8f0;
+            font-family: Arial, sans-serif;
         }
-    #caixa_urna {
-         width: 720px;
-        background-color: #d1d5db;
-        border: 2px solid #6b7280;
-        padding: 20px;
-        margin: 30px auto;
+        #caixa_urna {
+            width: 720px;
+            background-color: #d1d5db;
+            border: 2px solid #6b7280;
+            padding: 20px;
+            margin: 30px auto;
         }
-    .titulo_urna {
-        text-align: center;
-        color: #111827;
-        margin-bottom: 20px;
+        .titulo_urna {
+            text-align: center;
+            color: #111827;
+            margin-bottom: 20px;
         }
-    .tela {
-        background-color: #f0fdf4;
-        border: 3px solid #374151;
-        padding: 15px;
-        width: 390px;
-        float: left;
-        box-sizing: border-box;
-        min-height: 310px;
+        .tela {
+            background-color: #f0fdf4;
+            border: 3px solid #374151;
+            padding: 15px;
+            width: 390px;
+            float: left;
+            box-sizing: border-box;
+            min-height: 310px;
         }
-.teclado {
-        background-color: #1f2937;
-        padding: 15px;
-        width: 270px;
-        float: right;
-        box-sizing: border-box;
-        text-align: center;
+        .teclado {
+            background-color: #1f2937;
+            padding: 15px;
+            width: 270px;
+            float: right;
+            box-sizing: border-box;
+            text-align: center;
         }
-        
         .limpar_float {
-                clear: both;
-                }
+            clear: both;
+        }
         .visor_voto {
             margin-bottom: 20px;
         }
@@ -115,67 +114,65 @@
     <div id="caixa_urna">
         <h2 class="titulo_urna">JUSTIÇA ELEITORAL</h2>
 
-        <form action="">
-            <div class="tela">
-                
+        <div class="tela">
             <div class="visor_voto">
                 <p>SEU VOTO PARA PRESIDENTE:</p>
-                <input type="text" class="caixa_numero" maxlength="2">
+                <input type="text" id="pres" class="caixa_numero" maxlength="2" readonly>
             </div>
 
             <div class="visor_voto">
                 <p>SEU VOTO PARA GOVERNADOR:</p>
-                <input type="text" class="caixa_numero" maxlength="2">
+                <input type="text" id="gov" class="caixa_numero" maxlength="2" readonly>
             </div>
 
             <div class="legenda_lista">
                 <p><strong>CANDIDATOS A PRESIDENTE:</strong></p>
                 <p>11 - Lula Molusco<br>22 - Bulbassauro<br>33 - Lex Luthor</p>
-                    
+                
                 <p><strong>CANDIDATOS A GOVERNADOR:</strong></p>
                 <p>10 - Gorila Grodd<br>20 - Coringa<br>30 - Bane</p>
             </div>
-            </div>
+        </div>
 
-            <div class="teclado">
-                <div class="linha_botoes">
-                    <button type="button" class="botao_num">1</button>
-                    <button type="button" class="botao_num">2</button>
-                    <button type="button" class="botao_num">3</button>
-                </div>
-                <div class="linha_botoes">
-                    <button type="button" class="botao_num">4</button>
-                    <button type="button" class="botao_num">5</button>
-                    <button type="button" class="botao_num">6</button>
-                </div>
-                <div class="linha_botoes">
-                    <button type="button" class="botao_num">7</button>
-                    <button type="button" class="botao_num">8</button>
-                    <button type="button" class="botao_num">9</button>
-                </div>
-                <div class="linha_botoes">
-                    <button type="button" class="botao_num">0</button>
-                </div>
-                <br>
-                <div class="linha_botoes">
-                    <button type="reset" class="btn_branco">BRANCO</button>
-                    <button type="reset" class="btn_corrige">CORRIGE</button>
-                    <button type="submit" class="btn_confirma">CONFIRMA</button>
-                </div>
+        <div class="teclado">
+            <div class="linha_botoes">
+                <button type="button" class="botao_num" onclick="digitar('1')">1</button>
+                <button type="button" class="botao_num" onclick="digitar('2')">2</button>
+                <button type="button" class="botao_num" onclick="digitar('3')">3</button>
             </div>
+            <div class="linha_botoes">
+                <button type="button" class="botao_num" onclick="digitar('4')">4</button>
+                <button type="button" class="botao_num" onclick="digitar('5')">5</button>
+                <button type="button" class="botao_num" onclick="digitar('6')">6</button>
+            </div>
+            <div class="linha_botoes">
+                <button type="button" class="botao_num" onclick="digitar('7')">7</button>
+                <button type="button" class="botao_num" onclick="digitar('8')">8</button>
+                <button type="button" class="botao_num" onclick="digitar('9')">9</button>
+            </div>
+            <div class="linha_botoes">
+                <button type="button" class="botao_num" onclick="digitar('0')">0</button>
+            </div>
+            <br>
+            <div class="linha_botoes">
+                <button type="button" class="btn_branco" onclick="limpar()">BRANCO</button>
+                <button type="button" class="btn_corrige" onclick="limpar()">CORRIGE</button>
+                <button type="button" class="btn_confirma" onclick="confirmar()">CONFIRMA</button>
+            </div>
+        </div>
 
         <div class="limpar_float"></div>
     </div>
 
-<script>
+    <script>
         function digitar(numero) {
-        var pres = document.getElementById('pres');
-        var gov = document.getElementById('gov');
+            var pres = document.getElementById('pres');
+            var gov = document.getElementById('gov');
 
-        if (pres.value.length < 2) {
+            if (pres.value.length < 2) {
                 pres.value = pres.value + numero;
             } 
-        else if (gov.value.length < 2) {
+            else if (gov.value.length < 2) {
                 gov.value = gov.value + numero;
             }
         }
@@ -186,30 +183,29 @@
         }
 
         function confirmar() {
-        var pres = document.getElementById('pres').value;
-        var gov = document.getElementById('gov').value;
+            var pres = document.getElementById('pres').value;
+            var gov = document.getElementById('gov').value;
 
-        if (pres == "11") {
-             alert("Você votou em: Lula Molusco para Presidente!");
+            if (pres == "11") {
+                alert("Você votou em: Lula Molusco para Presidente!");
             } else if (pres == "22") {
-             alert("Você votou em: Bulbassauro para Presidente!");
+                alert("Você votou em: Bulbassauro para Presidente!");
             } else if (pres == "33") {
-             alert("Você votou em: Lex Luthor para Presidente!");
+                alert("Você votou em: Lex Luthor para Presidente!");
             } else if (pres != "") {
-             alert("Voto NULO para Presidente!");
+                alert("Voto NULO para Presidente!");
             }
 
             if (gov == "10") {
-             alert("Você votou em: Gorila Grodd para Governador!");
+                alert("Você votou em: Gorila Grodd para Governador!");
             } else if (gov == "20") {
-             alert("Você votou em: Coringa para Governador!");
+                alert("Você votou em: Coringa para Governador!");
             } else if (gov == "30") {
-             alert("Você votou em: Bane para Governador!");
+                alert("Você votou em: Bane para Governador!");
             } else if (gov != "") {
-              alert("Voto NULO para Governador!");
+                alert("Voto NULO para Governador!");
             }
         }
     </script>
 </body>
 </html>
-

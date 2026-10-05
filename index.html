@@ -5,167 +5,166 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Urna Eletrônica</title>
     <style>
-        body {
-            background-color: #e2e8f0;
-            font-family: Arial, sans-serif;
+    body {
+        background-color: #e2e8f0;
+        font-family: Arial, sans-serif;
         }
-      #caixa_urna {
-          width: 720px;
-          background-color: #d1d5db;
-          border: 2px solid #6b7280;
-          padding: 20px;
-          margin: 30px auto;
+    #caixa_urna {
+         width: 720px;
+        background-color: #d1d5db;
+        border: 2px solid #6b7280;
+        padding: 20px;
+        margin: 30px auto;
         }
-      .titulo_urna {
-          text-align: center;
-          color: #111827;
-          margin-bottom: 20px;
+    .titulo_urna {
+        text-align: center;
+        color: #111827;
+        margin-bottom: 20px;
         }
-      .tela {
-         background-color: #f0fdf4;
-         border: 3px solid #374151;
-         padding: 15px;
-         width: 390px;
-         float: left;
-         box-sizing: border-box;
-         min-height: 310px;
+    .tela {
+        background-color: #f0fdf4;
+        border: 3px solid #374151;
+        padding: 15px;
+        width: 390px;
+        float: left;
+        box-sizing: border-box;
+        min-height: 310px;
         }
-        .teclado {
-            background-color: #1f2937;
-            padding: 15px;
-            width: 270px;
-            float: right;
-            box-sizing: border-box;
-            text-align: center;
-            border-radius: 5px;
+.teclado {
+        background-color: #1f2937;
+        padding: 15px;
+        width: 270px;
+        float: right;
+        box-sizing: border-box;
+        text-align: center;
         }
+        
         .limpar_float {
-            clear: both;
+                clear: both;
+                }
+        .visor_voto {
+            margin-bottom: 20px;
         }
-        .campo_voto {
-            margin-bottom: 15px;
+        .visor_voto p {
+            margin: 5px 0;
+            font-size: 18px;
+            font-weight: bold;
         }
-        .campo_voto select {
-          width: 100%;
-          padding: 6px;
-          font-size: 14px;
-          margin-top: 5px;
+        .caixa_numero {
+            font-size: 24px;
+            width: 50px;
+            text-align: center;
+            padding: 5px;
+            border: 2px solid #000;
         }
-      .linha_botoes {
+        .linha_botoes {
             margin-bottom: 8px;
         }
         .botao_num {
-          width: 50px;
-          height: 40px;
-          background-color: #111827;
-          color: white;
-          font-weight: bold;
-          font-size: 16px;
-          border: 1px solid #4b5563;
-          margin: 2px;
-          cursor: pointer;
+            width: 50px;
+            height: 40px;
+            background-color: #111827;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            border: 1px solid #4b5563;
+            margin: 2px;
+            cursor: pointer;
         }
-      .btn_branco {
-          background-color: #ffffff;
-          color: black;
-          width: 70px;
-          height: 35px;
-          font-size: 10px;
-          font-weight: bold;
-          border: none;
-          cursor: pointer;
+        .btn_branco {
+            background-color: #ffffff;
+            color: black;
+            width: 70px;
+            height: 35px;
+            font-size: 10px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
         }
-      .btn_corrige {
-          background-color: #f97316;
-          color: white;
-          width: 70px;
-          height: 35px;
-          font-size: 10px;
-          font-weight: bold;
-          border: none;
-          cursor: pointer;
+        .btn_corrige {
+            background-color: #f97316;
+            color: white;
+            width: 70px;
+            height: 35px;
+            font-size: 10px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
         }
-      .btn_confirma {
-          background-color: #16a34a;
-          color: white;
-          width: 80px;
-          height: 40px;
-          font-size: 10px;
-          font-weight: bold;
-          border: none;
-          cursor: pointer;
+        .btn_confirma {
+            background-color: #16a34a;
+            color: white;
+            width: 80px;
+            height: 40px;
+            font-size: 10px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
         }
-    .legenda_lista {
-          font-size: 12px;
-          color: #374151;
-           margin-top: 10px;
+        .legenda_lista {
+            font-size: 13px;
+            color: #374151;
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
         }
     </style>
 </head>
 <body>
-<div id="caixa_urna">
-        <h2 class="titulo_urna">JUSTIÇA ELEITORAL - URNA ELETRÔNICA</h2>
+
+    <div id="caixa_urna">
+        <h2 class="titulo_urna">JUSTIÇA ELEITORAL</h2>
 
         <form action="">
             <div class="tela">
-                <h3>INICIE SEU VOTO:</h3>
                 
-        <div class="campo_voto">
-            <label><strong>Presidente:</strong></label><br>
-            <select id="presidente">
-            <option value="">-- Selecione o candidato --</option>
-            <option value="13">13 - Lula Molusco</option>
-            <option value="22">22 - Bulbassauro</option>
-            <option value="33">33 - Lex Luthor</option>
-            </select>
-        </div>
+            <div class="visor_voto">
+                <p>SEU VOTO PARA PRESIDENTE:</p>
+                <input type="text" class="caixa_numero" maxlength="2">
+            </div>
 
-        <div class="campo_voto">
-            <label><strong>Governador:</strong></label><br>
-            <select id="governador">
-            <option value="">-- Selecione o candidato --</option>
-            <option value="10">10 - Gorila Grodd</option>
-            <option value="20">20 - Coringa</option>
-            <option value="30">30 - Bane</option>
-            </select>
-        </div>
+            <div class="visor_voto">
+                <p>SEU VOTO PARA GOVERNADOR:</p>
+                <input type="text" class="caixa_numero" maxlength="2">
+            </div>
 
-        <hr>
+            <div class="legenda_lista">
+                <p><strong>CANDIDATOS A PRESIDENTE:</strong></p>
+                <p>11 - Lula Molusco<br>22 - Bulbassauro<br>33 - Lex Luthor</p>
+                    
+                <p><strong>CANDIDATOS A GOVERNADOR:</strong></p>
+                <p>10 - Gorila Grodd<br>20 - Coringa<br>30 - Bane</p>
+            </div>
+            </div>
 
-    <div class="legenda_lista">
-        <p><strong>Candidatos cadastrados:</strong></p>
-        <p>Presidentes: 11 - Lula Molusco | 22 - Bulbassauro | 33 - Lex Luthor</p>
-        <p>Governadores: 10 - Gorila Grodd | 20 - Coringa | 30 - Bane</p>
-     </div>
-    </div>
-<div class="teclado">
-        <div class="linha_botoes">
-            <button type="button" class="botao_num">1</button>
-            <button type="button" class="botao_num">2</button>
-            <button type="button" class="botao_num">3</button>
-        </div>
-        <div class="linha_botoes">
-            <button type="button" class="botao_num">4</button>
-            <button type="button" class="botao_num">5</button>
-            <button type="button" class="botao_num">6</button>
-        </div>
-        <div class="linha_botoes">
-            <button type="button" class="botao_num">7</button>
-            <button type="button" class="botao_num">8</button>
-            <button type="button" class="botao_num">9</button>
-        </div>
-            <div class="linha_botoes">
-                <button type="button" class="botao_num">0</button>
-        </div>
-            <br>
-        <div class="linha_botoes">
-            <button type="reset" class="btn_branco">BRANCO</button>
-            <button type="reset" class="btn_corrige">CORRIGE</button>
-            <button type="submit" class="btn_confirma">CONFIRMA</button>
-        </div>
-        </div>
+            <div class="teclado">
+                <div class="linha_botoes">
+                    <button type="button" class="botao_num">1</button>
+                    <button type="button" class="botao_num">2</button>
+                    <button type="button" class="botao_num">3</button>
+                </div>
+                <div class="linha_botoes">
+                    <button type="button" class="botao_num">4</button>
+                    <button type="button" class="botao_num">5</button>
+                    <button type="button" class="botao_num">6</button>
+                </div>
+                <div class="linha_botoes">
+                    <button type="button" class="botao_num">7</button>
+                    <button type="button" class="botao_num">8</button>
+                    <button type="button" class="botao_num">9</button>
+                </div>
+                <div class="linha_botoes">
+                    <button type="button" class="botao_num">0</button>
+                </div>
+                <br>
+                <div class="linha_botoes">
+                    <button type="reset" class="btn_branco">BRANCO</button>
+                    <button type="reset" class="btn_corrige">CORRIGE</button>
+                    <button type="submit" class="btn_confirma">CONFIRMA</button>
+                </div>
+            </div>
 
-     <div class="limpar_float"></div>
+            <div class="limpar_float"></div>
         </form>
     </div>
 

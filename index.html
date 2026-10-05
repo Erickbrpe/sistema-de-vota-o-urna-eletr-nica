@@ -164,9 +164,52 @@
                 </div>
             </div>
 
-            <div class="limpar_float"></div>
-        </form>
+        <div class="limpar_float"></div>
     </div>
 
+<script>
+        function digitar(numero) {
+        var pres = document.getElementById('pres');
+        var gov = document.getElementById('gov');
+
+        if (pres.value.length < 2) {
+                pres.value = pres.value + numero;
+            } 
+        else if (gov.value.length < 2) {
+                gov.value = gov.value + numero;
+            }
+        }
+
+        function limpar() {
+            document.getElementById('pres').value = "";
+            document.getElementById('gov').value = "";
+        }
+
+        function confirmar() {
+        var pres = document.getElementById('pres').value;
+        var gov = document.getElementById('gov').value;
+
+        if (pres == "11") {
+             alert("Você votou em: Lula Molusco para Presidente!");
+            } else if (pres == "22") {
+             alert("Você votou em: Bulbassauro para Presidente!");
+            } else if (pres == "33") {
+             alert("Você votou em: Lex Luthor para Presidente!");
+            } else if (pres != "") {
+             alert("Voto NULO para Presidente!");
+            }
+
+            if (gov == "10") {
+             alert("Você votou em: Gorila Grodd para Governador!");
+            } else if (gov == "20") {
+             alert("Você votou em: Coringa para Governador!");
+            } else if (gov == "30") {
+             alert("Você votou em: Bane para Governador!");
+            } else if (gov != "") {
+              alert("Voto NULO para Governador!");
+            }
+        }
+    </script>
 </body>
 </html>
+

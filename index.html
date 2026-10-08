@@ -151,25 +151,23 @@
             </div>
 
             <div class="teclado">
-                    <div class="linha_botoes">
-                    <button type="button" class="botao_num" onclick='digitar("1")'>1</button>
-                    <button type="button" class="botao_num" onclick='digitar("2")'>2</button>
-                    <button type="button" class="botao_num" onclick='digitar("3")'>3</button>
+                <div class="linha_botoes">
+                    <button type="button" class="botao_num" onclick="digitar('1')">1</button>
+                    <button type="button" class="botao_num" onclick="digitar('2')">2</button>
+                    <button type="button" class="botao_num" onclick="digitar('3')">3</button>
                 </div>
                 <div class="linha_botoes">
-                    <button type="button" class="botao_num" onclick='digitar("4")'>4</button>
-                    <button type="button" class="botao_num" onclick='digitar("5")'>5</button>
-                    <button type="button" class="botao_num" onclick='digitar("6")'>6</button>
+                    <button type="button" class="botao_num" onclick="digitar('4')">4</button>
+                    <button type="button" class="botao_num" onclick="digitar('5')">5</button>
+                    <button type="button" class="botao_num" onclick="digitar('6')">6</button>
                 </div>
                 <div class="linha_botoes">
-                    <button type="button" class="botao_num" onclick='digitar("7")'>7</button>
-                    <button type="button" class="botao_num" onclick='digitar("8")'>8</button>
-                    <button type="button" class="botao_num" onclick='digitar("9")'>9</button>
+                    <button type="button" class="botao_num" onclick="digitar('7')">7</button>
+                    <button type="button" class="botao_num" onclick="digitar('8')">8</button>
+                    <button type="button" class="botao_num" onclick="digitar('9')">9</button>
                 </div>
                 <div class="linha_botoes">
-                    <button type="button" class="botao_num" onclick='digitar("0")'>0</button>
-                </div>
-
+                    <button type="button" class="botao_num" onclick="digitar('0')">0</button>
                 </div>
                 <br>
                 <div class="linha_botoes">
@@ -182,17 +180,17 @@
     </div>
 
     <script>
-        var etapa = 'gov'; 
+        var etapa = "gov"; 
 
         function digitar(numero) {
-            if (etapa === 'gov') {
-                var gov = document.getElementById('gov');
+            if (etapa === "gov") {
+                var gov = document.getElementById("gov");
                 if (gov.value.length < 2) {
                     gov.value += numero;
                     analisarVoto();
                 }
-            } else if (etapa === 'pres') {
-                var pres = document.getElementById('pres');
+            } else if (etapa === "pres") {
+                var pres = document.getElementById("pres");
                 if (pres.value.length < 2) {
                     pres.value += numero;
                     analisarVoto();
@@ -201,94 +199,94 @@
         }
 
         function analisarVoto() {
-            if (etapa === 'gov') {
-                var gov = document.getElementById('gov').value;
-                var msgGov = document.getElementById('msg_gov');
+            if (etapa === "gov") {
+                var gov = document.getElementById("gov").value;
+                var msgGov = document.getElementById("msg_gov");
                 if (gov.length === 2) {
-                    if (gov === '10' || gov === '20' || gov === '30') {
-                        msgGov.textContent = 'VOTO VALIDO';
-                        msgGov.style.color = '#16a34a';
+                    if (gov === "10" || gov === "20" || gov === "30") {
+                        msgGov.textContent = "VOTO VÁLIDO";
+                        msgGov.style.color = "#16a34a";
                     } else {
-                        msgGov.textContent = 'VOTO NULO';
-                        msgGov.style.color = '#b91c1c';
+                        msgGov.textContent = "VOTO NULO";
+                        msgGov.style.color = "#b91c1c";
                     }
                 }
-            } else if (etapa === 'pres') {
-                var pres = document.getElementById('pres').value;
-                var msgPres = document.getElementById('msg_pres');
+            } else if (etapa === "pres") {
+                var pres = document.getElementById("pres").value;
+                var msgPres = document.getElementById("msg_pres");
                 if (pres.length === 2) {
-                    if (pres === '13' || pres === '22' || pres === '33') {
-                        msgPres.textContent = 'VOTO VALIDO';
-                        msgPres.style.color = '#16a34a';
+                    if (pres === "13" || pres === "22" || pres === "33") {
+                        msgPres.textContent = "VOTO VÁLIDO";
+                        msgPres.style.color = "#16a34a";
                     } else {
-                        msgPres.textContent = 'VOTO NULO';
-                        msgPres.style.color = '#b91c1c';
+                        msgPres.textContent = "VOTO NULO";
+                        msgPres.style.color = "#b91c1c";
                     }
                 }
             }
         }
 
         function limpar() {
-            if (etapa === 'gov') {
-                document.getElementById('gov').value = '';
-                document.getElementById('msg_gov').textContent = '';
-            } else if (etapa === 'pres') {
-                document.getElementById('pres').value = '';
-                document.getElementById('msg_pres').textContent = '';
+            if (etapa === "gov") {
+                document.getElementById("gov").value = "";
+                document.getElementById("msg_gov").textContent = "";
+            } else if (etapa === "pres") {
+                document.getElementById("pres").value = "";
+                document.getElementById("msg_pres").textContent = "";
             }
         }
 
         function branco() {
-            if (etapa === 'gov') {
-                document.getElementById('gov').value = 'BR';
-                var msgGov = document.getElementById('msg_gov');
-                msgGov.textContent = 'VOTO EM BRANCO';
-                msgGov.style.color = '#1f2937';
-            } else if (etapa === 'pres') {
-                document.getElementById('pres').value = 'BR';
-                var msgPres = document.getElementById('msg_pres');
-                msgPres.textContent = 'VOTO EM BRANCO';
-                msgPres.style.color = '#1f2937';
+            if (etapa === "gov") {
+                document.getElementById("gov").value = "BR";
+                var msgGov = document.getElementById("msg_gov");
+                msgGov.textContent = "VOTO EM BRANCO";
+                msgGov.style.color = "#1f2937";
+            } else if (etapa === "pres") {
+                document.getElementById("pres").value = "BR";
+                var msgPres = document.getElementById("msg_pres");
+                msgPres.textContent = "VOTO EM BRANCO";
+                msgPres.style.color = "#1f2937";
             }
         }
 
         function confirmar() {
-            if (etapa === 'gov') {
-                var gov = document.getElementById('gov').value;
-                if (gov === '') return; 
+            if (etapa === "gov") {
+                var gov = document.getElementById("gov").value;
+                if (gov === "") return; 
 
-                if (gov == '10') {
-                    alert('Voce votou em: Gorila Grodd para Governador');
-                } else if (gov == '20') {
-                    alert('Voce votou em: Coringa para Governador');
-                } else if (gov == '30') {
-                    alert('Voce votou em: Bane para Governador');
-                } else if (gov == 'BR') {
-                    alert('Voce votou em BRANCO para Governador');
+                if (gov == "10") {
+                    alert("Você votou em: Gorila Grodd para Governador");
+                } else if (gov == "20") {
+                    alert("Você votou em: Coringa para Governador");
+                } else if (gov == "30") {
+                    alert("Você votou em: Bane para Governador");
+                } else if (gov == "BR") {
+                    alert("Você votou em BRANCO para Governor");
                 } else {
-                    alert('Voto NULO para Governador');
+                    alert("Voto NULO para Governador");
                 }
 
-                etapa = 'pres';
-                document.getElementById('bloco_gov').style.display = 'none';
-                document.getElementById('bloco_pres').style.display = 'block';
+                etapa = "pres";
+                document.getElementById("bloco_gov").style.display = "none";
+                document.getElementById("bloco_pres").style.display = "block";
 
-            } else if (etapa === 'pres') {
-            var pres = document.getElementById('pres').value;
-            if (pres === '') return;
-            if (pres == '13') {
-            alert('Voce votou em: Lula Molusco para Presidente');
-            } else if (pres == '22') {
-           alert('Voce votou em: Bulbassauro para Presidente');
-           } else if (pres == '33') {
-        alert('Voce votou em: Lex Luthor para Presidente');
-          } else if (pres == 'BR') {
-        alert('Voce votou em BRANCO para Presidente');
-       } else {
-       alert('Voto NULO para Presidente');
-      }
-      etapa = 'fim';
-     document.getElementById('bloco_pres').style.display = 'none';
-     document.getElementById('bloco_fim').style.display = 'block';
-     }
-     }
+                } else if (etapa === "pres") {
+                var pres = document.getElementById("pres").value;
+                if (pres === "") return;
+                if (pres == "13") {
+                alert("Você votou em: Lula Molusco para Presidente");
+               } else if (pres == "22") {
+              alert("Você votou em: Bulbassauro para Presidente");
+               } else if (pres == "33") {
+              alert("Você votou em: Lex Luthor para Presidente");
+              } else if (pres == "BR") {
+             alert("Você votou em BRANCO para Presidente");
+            } else {
+           alert("Voto NULO para Presidente");
+           }
+        etapa = "fim";
+        document.getElementById("bloco_pres").style.display = "none";
+        document.getElementById("bloco_fim").style.display = "block";
+       }
+       }

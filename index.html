@@ -111,26 +111,31 @@
 </head>
 <body>
 
-    <div id="caixa_urna">
-        <h2 class="titulo_urna">JUSTIÇA ELEITORAL</h2>
-
-        <div class="tela">
-            <div class="visor_voto">
-                <p>SEU VOTO PARA PRESIDENTE:</p>
-                <input type="text" id="pres" class="caixa_numero" maxlength="2" readonly>
-            </div>
-
+           <div class="tela">
+            <div id="bloco_gov">
             <div class="visor_voto">
                 <p>SEU VOTO PARA GOVERNADOR:</p>
                 <input type="text" id="gov" class="caixa_numero" maxlength="2" readonly>
+                </div>
+                <div class="legenda_lista">
+                    <p><strong>CANDIDATOS A GOVERNADOR:</strong></p>
+                    <p>10 - Gorila Grodd<br>20 - Coringa<br>30 - Bane</p>
+                </div>
+            </div>
+               
+            <div id="bloco_pres" style="display: none;">
+                <div class="visor_voto">
+                    <p>SEU VOTO PARA PRESIDENTE:</p>
+                    <input type="text" id="pres" class="caixa_numero" maxlength="2" readonly>
+                </div>
+                <div class="legenda_lista">
+                    <p><strong>CANDIDATOS A PRESIDENTE:</strong></p>
+                    <p>13 - Lula Molusco<br>22 - Bulbassauro<br>33 - Lex Luthor</p>
+                </div>
             </div>
 
-            <div class="legenda_lista">
-                <p><strong>CANDIDATOS A PRESIDENTE:</strong></p>
-                <p>11 - Lula Molusco<br>22 - Bulbassauro<br>33 - Lex Luthor</p>
-                
-                <p><strong>CANDIDATOS A GOVERNADOR:</strong></p>
-                <p>10 - Gorila Grodd<br>20 - Coringa<br>30 - Bane</p>
+            <div id="bloco_fim" style="display: none; font-size: 50px; font-weight: bold; text-align: center; margin-top: 70px;">
+                FIM
             </div>
         </div>
 
@@ -165,26 +170,48 @@
     </div>
 
     <script>
-        function digitar(numero) {
-            var pres = document.getElementById('pres');
-            var gov = document.getElementById('gov');
+        var etapa = 'gov'; 
 
-            if (pres.value.length < 2) {
-                pres.value = pres.value + numero;
-            } 
-            else if (gov.value.length < 2) {
-                gov.value = gov.value + numero;
+        function digitar(numero) {
+            if (etapa === 'gov') {
+            var gov = document.getElementById('gov');
+            if (gov.value.length < 2) gov.value += numero;
+            } else if (etapa === 'pres') {
+            var pres = document.getElementById('pres');
+            if (pres.value.length < 2) pres.value += numero;
             }
         }
 
         function limpar() {
-            document.getElementById('pres').value = "";
-            document.getElementById('gov').value = "";
+            if (etapa === 'gov') {
+                document.getElementById('gov').value = "";
+            } else if (etapa === 'pres') {
+                document.getElementById('pres').value = "";
+            }
         }
 
         function confirmar() {
-            var pres = document.getElementById('pres').value;
+            if (etapa === 'gov') {
             var gov = document.getElementById('gov').value;
+            if (gov === "") return; 
+
+            if (gov == "10") {
+                    alert("Você votou em: Gorila Grodd para Governador!");
+            } else if (gov == "20") {
+                    alert("Você votou em: Coringa para Governador!");
+            } else if (gov == "30") {
+                    alert("Você votou em: Bane para Governador!");
+            } else {
+                    alert("Voto NULO para Governador!");
+                }
+
+            etapa = 'pres';
+            document.getElementById('bloco_gov').style.display = 'none';
+            document.getElementById('bloco_pres').style.display = 'block';
+
+            } else if (etapa === 'pres') {
+            var pres = document.getElementById('pres').value;
+            if (pres === "") return; 
 
             if (pres == "11") {
                 alert("Você votou em: Lula Molusco para Presidente!");
@@ -192,20 +219,15 @@
                 alert("Você votou em: Bulbassauro para Presidente!");
             } else if (pres == "33") {
                 alert("Você votou em: Lex Luthor para Presidente!");
-            } else if (pres != "") {
+             } else {
                 alert("Voto NULO para Presidente!");
-            }
-
-            if (gov == "10") {
-                alert("Você votou em: Gorila Grodd para Governador!");
-            } else if (gov == "20") {
-                alert("Você votou em: Coringa para Governador!");
-            } else if (gov == "30") {
-                alert("Você votou em: Bane para Governador!");
-            } else if (gov != "") {
-                alert("Voto NULO para Governador!");
-            }
+             }
+ 
+        etapa = 'fim';
+        document.getElementById('bloco_pres').style.display = 'none';
+        document.getElementById('bloco_fim').style.display = 'block';
         }
-    </script>
+        }
+</script>
 </body>
 </html>

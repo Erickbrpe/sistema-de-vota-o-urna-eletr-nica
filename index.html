@@ -115,7 +115,7 @@
             <div id="bloco_gov">
             <div class="visor_voto">
                 <p>SEU VOTO PARA GOVERNADOR:</p>
-                <input type="text" id="gov" class="caixa_numero" maxlength="2" readonly>
+                <input type="text" id="gov" class="caixa_numero" maxlength="4" readonly>
                 </div>
                 <div class="legenda_lista">
                     <p><strong>CANDIDATOS A GOVERNADOR:</strong></p>
@@ -126,7 +126,7 @@
             <div id="bloco_pres" style="display: none;">
                 <div class="visor_voto">
                     <p>SEU VOTO PARA PRESIDENTE:</p>
-                    <input type="text" id="pres" class="caixa_numero" maxlength="2" readonly>
+                    <input type="text" id="pres" class="caixa_numero" maxlength="4" readonly>
                 </div>
                 <div class="legenda_lista">
                     <p><strong>CANDIDATOS A PRESIDENTE:</strong></p>
@@ -213,7 +213,7 @@
             var pres = document.getElementById('pres').value;
             if (pres === "") return; 
 
-            if (pres == "11") {
+            if (pres == "13") {
                 alert("Você votou em: Lula Molusco para Presidente!");
             } else if (pres == "22") {
                 alert("Você votou em: Bulbassauro para Presidente!");

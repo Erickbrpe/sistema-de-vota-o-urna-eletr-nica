@@ -21,15 +21,12 @@
             color: #111827;
             margin-bottom: 20px;
         }
-        .interface_urna {
-            display: flex;
-            justify-content: space-between;
-        }
         .tela {
             background-color: #f0fdf4;
             border: 3px solid #374151;
             padding: 15px;
             width: 390px;
+            float: left;
             box-sizing: border-box;
             min-height: 310px;
         }
@@ -37,8 +34,12 @@
             background-color: #1f2937;
             padding: 15px;
             width: 270px;
+            float: right;
             box-sizing: border-box;
             text-align: center;
+        }
+        .limpar_float {
+            clear: both;
         }
         .visor_voto {
             margin-bottom: 20px;
@@ -49,17 +50,12 @@
             font-weight: bold;
         }
         .caixa_numero {
-            font-size: 24px;
-            width: 50px;
+            font-size: 22px;
+            width: 140px;
             text-align: center;
             padding: 5px;
             border: 2px solid #000;
-        }
-        .info_voto {
-            font-size: 20px;
             font-weight: bold;
-            color: #b91c1c;
-            margin-top: 10px;
         }
         .linha_botoes {
             margin-bottom: 8px;
@@ -119,174 +115,127 @@
     <div id="caixa_urna">
         <h2 class="titulo_urna">JUSTIÇA ELEITORAL</h2>
 
-        <div class="interface_urna">
-            <div class="tela">
-                <div id="bloco_gov">
-                    <div class="visor_voto">
-                        <p>SEU VOTO PARA GOVERNADOR:</p>
-                        <input type="text" id="gov" class="caixa_numero" maxlength="2" readonly>
-                        <div id="msg_gov" class="info_voto"></div>
-                    </div>
-                    <div class="legenda_lista">
-                        <p><strong>CANDIDATOS A GOVERNADOR:</strong></p>
-                        <p>10 - Gorila Grodd<br>20 - Coringa<br>30 - Bane</p>
-                    </div>
-                </div>
-                   
-                <div id="bloco_pres" style="display: none;">
-                    <div class="visor_voto">
-                        <p>SEU VOTO PARA PRESIDENTE:</p>
-                        <input type="text" id="pres" class="caixa_numero" maxlength="2" readonly>
-                        <div id="msg_pres" class="info_voto"></div>
-                    </div>
-                    <div class="legenda_lista">
-                        <p><strong>CANDIDATOS A PRESIDENTE:</strong></p>
-                        <p>13 - Lula Molusco<br>22 - Bulbassauro<br>33 - Lex Luthor</p>
-                    </div>
-                </div>
-
-                <div id="bloco_fim" style="display: none; font-size: 50px; font-weight: bold; text-align: center; margin-top: 70px;">
-                    FIM
-                </div>
+        <div class="tela">
+            <div class="visor_voto">
+                <p id="titulo_cargo">SEU VOTO PARA PRESIDENTE:</p>
+                <input type="text" id="campo_voto" class="caixa_numero" readonly>
             </div>
 
-            <div class="teclado">
-                <div class="linha_botoes">
-                    <button type="button" class="botao_num" onclick="digitar('1')">1</button>
-                    <button type="button" class="botao_num" onclick="digitar('2')">2</button>
-                    <button type="button" class="botao_num" onclick="digitar('3')">3</button>
-                </div>
-                <div class="linha_botoes">
-                    <button type="button" class="botao_num" onclick="digitar('4')">4</button>
-                    <button type="button" class="botao_num" onclick="digitar('5')">5</button>
-                    <button type="button" class="botao_num" onclick="digitar('6')">6</button>
-                </div>
-                <div class="linha_botoes">
-                    <button type="button" class="botao_num" onclick="digitar('7')">7</button>
-                    <button type="button" class="botao_num" onclick="digitar('8')">8</button>
-                    <button type="button" class="botao_num" onclick="digitar('9')">9</button>
-                </div>
-                <div class="linha_botoes">
-                    <button type="button" class="botao_num" onclick="digitar('0')">0</button>
-                </div>
-                <br>
-                <div class="linha_botoes">
-                    <button type="button" class="btn_branco" onclick="branco()">BRANCO</button>
-                    <button type="button" class="btn_corrige" onclick="limpar()">CORRIGE</button>
-                    <button type="button" class="btn_confirma" onclick="confirmar()">CONFIRMA</button>
+            <div class="legenda_lista">
+                <p><strong id="titulo_candidatos">CANDIDATOS A PRESIDENTE:</strong></p>
+                <div id="lista_candidatos">
+                    <p>13 - Lula Molusco<br>22 - Bulbassauro<br>33 - Lex Luthor</p>
                 </div>
             </div>
         </div>
+
+        <div class="teclado">
+            <div class="linha_botoes">
+                <button type="button" class="botao_num" onclick="digitar('1')">1</button>
+                <button type="button" class="botao_num" onclick="digitar('2')">2</button>
+                <button type="button" class="botao_num" onclick="digitar('3')">3</button>
+            </div>
+            <div class="linha_botoes">
+                <button type="button" class="botao_num" onclick="digitar('4')">4</button>
+                <button type="button" class="botao_num" onclick="digitar('5')">5</button>
+                <button type="button" class="botao_num" onclick="digitar('6')">6</button>
+            </div>
+            <div class="linha_botoes">
+                <button type="button" class="botao_num" onclick="digitar('7')">7</button>
+                <button type="button" class="botao_num" onclick="digitar('8')">8</button>
+                <button type="button" class="botao_num" onclick="digitar('9')">9</button>
+            </div>
+            <div class="linha_botoes">
+                <button type="button" class="botao_num" onclick="digitar('0')">0</button>
+            </div>
+            <br>
+            <div class="linha_botoes">
+                <button type="button" class="btn_branco" onclick="votarBranco()">BRANCO</button>
+                <button type="button" class="btn_corrige" onclick="corrige()">CORRIGE</button>
+                <button type="button" class="btn_confirma" onclick="confirma()">CONFIRMA</button>
+            </div>
+        </div>
+
+        <div class="limpar_float"></div>
     </div>
 
     <script>
-        var etapa = "gov"; 
+        var etapa = 1;
+        var numero = "";
+        var eBranco = false;
 
-        function digitar(numero) {
-            if (etapa === "gov") {
-                var gov = document.getElementById("gov");
-                if (gov.value.length < 2) {
-                    gov.value += numero;
-                    analisarVoto();
-                }
-            } else if (etapa === "pres") {
-                var pres = document.getElementById("pres");
-                if (pres.value.length < 2) {
-                    pres.value += numero;
-                    analisarVoto();
-                }
+        function digitar(n) {
+            if (eBranco == false && numero.length < 2) {
+                numero = numero + n;
+                document.getElementById('campo_voto').value = numero;
             }
         }
 
-        function analisarVoto() {
-            if (etapa === "gov") {
-                var gov = document.getElementById("gov").value;
-                var msgGov = document.getElementById("msg_gov");
-                if (gov.length === 2) {
-                    if (gov === "10" || gov === "20" || gov === "30") {
-                        msgGov.textContent = "VOTO VÁLIDO";
-                        msgGov.style.color = "#16a34a";
-                    } else {
-                        msgGov.textContent = "VOTO NULO";
-                        msgGov.style.color = "#b91c1c";
-                    }
-                }
-            } else if (etapa === "pres") {
-                var pres = document.getElementById("pres").value;
-                var msgPres = document.getElementById("msg_pres");
-                if (pres.length === 2) {
-                    if (pres === "13" || pres === "22" || pres === "33") {
-                        msgPres.textContent = "VOTO VÁLIDO";
-                        msgPres.style.color = "#16a34a";
-                    } else {
-                        msgPres.textContent = "VOTO NULO";
-                        msgPres.style.color = "#b91c1c";
-                    }
-                }
-            }
+        function votarBranco() {
+            numero = "";
+            eBranco = true;
+            document.getElementById('campo_voto').value = "BRANCO";
         }
 
-        function limpar() {
-            if (etapa === "gov") {
-                document.getElementById("gov").value = "";
-                document.getElementById("msg_gov").textContent = "";
-            } else if (etapa === "pres") {
-                document.getElementById("pres").value = "";
-                document.getElementById("msg_pres").textContent = "";
-            }
+        function corrige() {
+            numero = "";
+            eBranco = false;
+            document.getElementById('campo_voto').value = "";
         }
 
-        function branco() {
-            if (etapa === "gov") {
-                document.getElementById("gov").value = "BR";
-                var msgGov = document.getElementById("msg_gov");
-                msgGov.textContent = "VOTO EM BRANCO";
-                msgGov.style.color = "#1f2937";
-            } else if (etapa === "pres") {
-                document.getElementById("pres").value = "BR";
-                var msgPres = document.getElementById("msg_pres");
-                msgPres.textContent = "VOTO EM BRANCO";
-                msgPres.style.color = "#1f2937";
+        function confirma() {
+            var campo = document.getElementById('campo_voto').value;
+
+            if (campo == "") {
+                alert("Por favor, digite um número ou clique em BRANCO para votar!");
+                return;
             }
-        }
 
-        function confirmar() {
-            if (etapa === "gov") {
-                var gov = document.getElementById("gov").value;
-                if (gov === "") return; 
-
-                if (gov == "10") {
-                    alert("Você votou em: Gorila Grodd para Governador");
-                } else if (gov == "20") {
-                    alert("Você votou em: Coringa para Governador");
-                } else if (gov == "30") {
-                    alert("Você votou em: Bane para Governador");
-                } else if (gov == "BR") {
-                    alert("Você votou em BRANCO para Governor");
+            if (etapa == 1) {
+                if (eBranco == true) {
+                    alert("Voto em BRANCO confirmado para Presidente!");
+                } else if (numero == "13") {
+                    alert("Voto em Lula Molusco confirmado para Presidente!");
+                } else if (numero == "22") {
+                    alert("Voto em Bulbassauro confirmado para Presidente!");
+                } else if (numero == "33") {
+                    alert("Voto em Lex Luthor confirmado para Presidente!");
                 } else {
-                    alert("Voto NULO para Governador");
+                    alert("Voto NULO confirmado para Presidente!");
                 }
 
-                etapa = "pres";
-                document.getElementById("bloco_gov").style.display = "none";
-                document.getElementById("bloco_pres").style.display = "block";
+                etapa = 2;
+                numero = "";
+                eBranco = false;
+                document.getElementById('campo_voto').value = "";
+                document.getElementById('titulo_cargo').innerText = "SEU VOTO PARA GOVERNADOR:";
+                document.getElementById('titulo_candidatos').innerText = "CANDIDATOS A GOVERNADOR:";
+                document.getElementById('lista_candidatos').innerHTML = "<p>10 - Gorila Grodd<br>20 - Coringa<br>30 - Bane</p>";
 
-                } else if (etapa === "pres") {
-                var pres = document.getElementById("pres").value;
-                if (pres === "") return;
-                if (pres == "13") {
-                alert("Você votou em: Lula Molusco para Presidente");
-               } else if (pres == "22") {
-              alert("Você votou em: Bulbassauro para Presidente");
-               } else if (pres == "33") {
-              alert("Você votou em: Lex Luthor para Presidente");
-              } else if (pres == "BR") {
-             alert("Você votou em BRANCO para Presidente");
-            } else {
-           alert("Voto NULO para Presidente");
-           }
-        etapa = "fim";
-        document.getElementById("bloco_pres").style.display = "none";
-        document.getElementById("bloco_fim").style.display = "block";
-       }
-       }
+            } else if (etapa == 2) {
+                if (eBranco == true) {
+                    alert("Voto em BRANCO confirmado para Governador!");
+                } else if (numero == "10") {
+                    alert("Voto em Gorila Grodd confirmado para Governador!");
+                } else if (numero == "20") {
+                    alert("Voto em Coringa confirmado para Governador!");
+                } else if (numero == "30") {
+                    alert("Voto em Bane confirmado para Governador!");
+                } else {
+                    alert("Voto NULO confirmado para Governador!");
+                }
+
+                alert("FIM! Todos os votos foram computados.");
+
+                etapa = 1;
+                numero = "";
+                eBranco = false;
+                document.getElementById('campo_voto').value = "";
+                document.getElementById('titulo_cargo').innerText = "SEU VOTO PARA PRESIDENTE:";
+                document.getElementById('titulo_candidatos').innerText = "CANDIDATOS A PRESIDENTE:";
+                document.getElementById('lista_candidatos').innerHTML = "<p>13 - Lula Molusco<br>22 - Bulbassauro<br>33 - Lex Luthor</p>";
+            }
+        }
+    </script>
+</body>
+</html>
